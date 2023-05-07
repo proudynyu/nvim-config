@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     -- Colors
     use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
-    use { "catppuccin/nvim", as = "catppuccin" }
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
@@ -46,7 +45,6 @@ use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
 }
-
 
 use {
     'numToStr/Comment.nvim',

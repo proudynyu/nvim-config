@@ -1,16 +1,29 @@
 function Color(color)
-  if color then
-      vim.cmd.colorscheme(color)
-  else
-    require('onedark').setup {
-      style = 'warmer'
-    }
+    if color then
+        vim.cmd.colorscheme(color)
+    else
+        require("onedark").setup {
+            style = "deep",
+            transparent = true,
+            code_style = {
+                comments = 'italic',
+                keywords = 'none',
+                functions = 'none',
+                strings = 'none',
+                variables = 'none'
+            },
+            colors = {},
+            highlights = {},
 
-    require('onedark').load()
-  end
+            diagnostics = {
+                darker = true,
+                undercurl = true,
+                background = true,
+            },
+        }
 
-  -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+        require('onedark').load()
+    end
 end
 
-Color("catppuccin")
+Color()
