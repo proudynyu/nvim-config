@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     -- Colors
     use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
@@ -31,7 +32,6 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},             -- Required
             {                                      -- Optional
             'williamboman/mason.nvim',
-            run = ":MasonUpdate"
         },
         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
