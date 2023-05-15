@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- split file
-vim.keymap.set("n", "<C-[>", vim.cmd.vsplit)
+vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 
 -- change word globaly
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
