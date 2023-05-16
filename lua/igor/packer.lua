@@ -53,7 +53,11 @@ use {
     end
 }
 
-use 'preservim/nerdtree'
+use {
+    'preservim/nerdtree',
+    requires = { { 'ryanoasis/vim-devicons' } }
+}
+use 'ryanoasis/vim-devicons'
 
 use {
     "prettier/vim-prettier",
