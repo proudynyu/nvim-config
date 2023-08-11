@@ -67,22 +67,21 @@ return require('packer').startup(function(use)
         end,
     }
 
-     use {
-        "kyazdani42/nvim-tree.lua",
-        requires = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-          require("nvim-web-devicons").setup()
-
-          require("nvim-tree").setup {
-            hijack_cursor = true,
-            view = {
-              width = 40
-            }
-          }
-        end
-      }
-
       use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
+      use "MunifTanjim/nui.nvim"
+      use "nvim-lua/plenary.nvim"
+      use "nvim-tree/nvim-web-devicons"
+
+      use {
+          "nvim-neo-tree/neo-tree.nvim",
+          version = "*",
+          dependencies = {
+              "nvim-lua/plenary.nvim",
+              "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+              "MunifTanjim/nui.nvim",
+          },
+      }
 
 end)
 

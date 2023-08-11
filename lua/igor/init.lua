@@ -9,7 +9,7 @@ require("igor.vim-fugitive")
 require("igor.lsp")
 require("igor.set")
 require("igor.color")
-require("igor.nvimtree")
 require("igor.bufferline")
+require("igor.neo-tree")
 require("Comment").setup()
 
