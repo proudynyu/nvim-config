@@ -78,8 +78,8 @@ require("neo-tree").setup({
                 nowait = true,
             },
             mappings = {
-                ["<space>"] = { 
-                    "toggle_node", 
+                ["<space>"] = {
+                    "toggle_node",
                     nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
                 },
                 ["<2-LeftMouse>"] = "open",
@@ -100,7 +100,7 @@ require("neo-tree").setup({
                 -- ['C'] = 'close_all_subnodes',
                 ["z"] = "close_all_nodes",
                 --["Z"] = "expand_all_nodes",
-                ["a"] = { 
+                ["a"] = {
                     "add",
                     -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
                     -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -132,12 +132,12 @@ require("neo-tree").setup({
                 nesting_rules = {},
                 filesystem = {
                     filtered_items = {
-                        visible = false, -- when true, they will just be displayed differently than normal items
-                        hide_dotfiles = true,
-                        hide_gitignored = true,
-                        hide_hidden = true, -- only works on Windows for hidden files/directories
+                        visible = true, -- when true, they will just be displayed differently than normal items
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                        hide_hidden = false, -- only works on Windows for hidden files/directories
                         hide_by_name = {
-                            --"node_modules"
+                            "node_modules"
                         },
                         hide_by_pattern = { -- uses glob style patterns
                         --"*.meta",
@@ -188,40 +188,38 @@ require("neo-tree").setup({
         ["<C-p>"] = "move_cursor_up",
     },
 },
-
 commands = {} -- Add a custom command or override a global one using the same function name
-        },
-        buffers = {
-            follow_current_file = {
-                enabled = true, -- This will find and focus the file in the active buffer every time
-                --              -- the current file is changed while the tree is open.
-                leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-            },
-            group_empty_dirs = true, -- when true, empty folders will be grouped together
-            show_unloaded = true,
-            window = {
-                mappings = {
-                    ["bd"] = "buffer_delete",
-                    ["<bs>"] = "navigate_up",
-                    ["."] = "set_root",
+                },
+                buffers = {
+                    follow_current_file = {
+                        enabled = true, -- This will find and focus the file in the active buffer every time
+                        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+                    },
+                    group_empty_dirs = true, -- when true, empty folders will be grouped together
+                    show_unloaded = true,
+                    window = {
+                        mappings = {
+                            ["bd"] = "buffer_delete",
+                            ["<bs>"] = "navigate_up",
+                            ["."] = "set_root",
+                        }
+                    },
+                },
+                git_status = {
+                    window = {
+                        position = "float",
+                        mappings = {
+                            ["A"]  = "git_add_all",
+                            ["gu"] = "git_unstage_file",
+                            ["ga"] = "git_add_file",
+                            ["gr"] = "git_revert_file",
+                            ["gc"] = "git_commit",
+                            ["gp"] = "git_push",
+                            ["gg"] = "git_commit_and_push",
+                        }
+                    }
                 }
-            },
-        },
-        git_status = {
-            window = {
-                position = "float",
-                mappings = {
-                    ["A"]  = "git_add_all",
-                    ["gu"] = "git_unstage_file",
-                    ["ga"] = "git_add_file",
-                    ["gr"] = "git_revert_file",
-                    ["gc"] = "git_commit",
-                    ["gp"] = "git_push",
-                    ["gg"] = "git_commit_and_push",
-                }
-            }
-        }
-    })
+            })
 
-vim.keymap.set("n", "<leader>bt", ":Neotree toggle reveal float<CR>")
-vim.keymap.set("n", "<leader>bb", ":Neotree buffers<CR>")
+vim.keymap.set("n", "<leader>pe", ":Neotree toggle reveal float<CR>")
+vim.keymap.set("n", "<leader>pb", ":Neotree buffers<CR>")
