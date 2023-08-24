@@ -92,5 +92,9 @@ return require('packer').startup(function(use)
               }
           end
       }
+      use {
+          'feline-nvim/feline.nvim',
+          branch = '0.5-compat'
+      }
 end)
 

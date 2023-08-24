@@ -14,4 +14,4 @@ require("igor.bufferline")
 require("igor.neo-tree")
 require("igor.which-key")
 require("Comment").setup()
-
+require('feline').setup()
