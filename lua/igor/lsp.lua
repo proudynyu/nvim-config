@@ -1,9 +1,17 @@
 local lsp = require('lsp-zero').preset({})
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.lua_ls.setup(lsp.nvim_lua_ls())
+
+nvim_lsp.denols.setup {
+    on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+}
 
 lsp.ensure_installed({
     'tsserver',
+    'denols',
     'eslint',
     'rust_analyzer',
     'html',
