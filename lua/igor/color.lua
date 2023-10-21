@@ -26,4 +26,4 @@ function Color(color)
     end
 end
 
-Color()
+Color("rose-pine")

@@ -96,5 +96,7 @@ return require('packer').startup(function(use)
           'feline-nvim/feline.nvim',
           branch = '0.5-compat'
       }
+
+      use({ 'rose-pine/neovim', as = 'rose-pine' })
 end)
 
