@@ -1,6 +1,16 @@
 function Color(color)
     if color then
+        if color == 'rose-pine' then
+            require('rose-pine').setup {
+                transparent = true,
+                disable_background = true
+            }
+        end
+
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         vim.cmd.colorscheme(color)
+
     else
         require("onedark").setup {
             style = "deep",
@@ -26,4 +36,4 @@ function Color(color)
     end
 end
 
-Color("rose-pine")
+Color('gruvbox')

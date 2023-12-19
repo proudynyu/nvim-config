@@ -1,7 +1,6 @@
 -- open explorer view
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-
 -- move lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -31,10 +30,11 @@ vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- add copy to system (for WSL for now)
--- TODO: implement a OS identifier
-vim.g.clipboard = {
-    name = 'wsl clipboard',
-    copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
-    paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
-    cache_enabled = true
-}
+if package.config.sub(1, 1) == '\\\\' then
+    vim.g.clipboard = {
+        name = 'wsl clipboard',
+        copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+        paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
+        cache_enabled = true
+    }
+end

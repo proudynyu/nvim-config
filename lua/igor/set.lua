@@ -6,7 +6,7 @@ vim.opt.expandtab = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.wrap = false -- Wrapping word, can comment that if don't want
+vim.opt.wrap = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

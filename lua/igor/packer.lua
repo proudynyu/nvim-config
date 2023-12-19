@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     -- Colors
     use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
+    use 'craftzdog/solarized-osaka.nvim'
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
