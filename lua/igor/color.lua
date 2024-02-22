@@ -36,4 +36,4 @@ function Color(color)
     end
 end
 
-Color('gruvbox')
+Color('rose-pine')

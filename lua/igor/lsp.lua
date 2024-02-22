@@ -1,25 +1,75 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero')
+
+lsp.on_attach(function(_, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
+end)
+
+-- Format files on save
+-- Can configure what server and language
+lsp.format_on_save({
+    format_opts = {
+        async = false,
+        timeout_ms = 10000,
+    },
+    servers = {
+        ["gopls"] = { 'go' }
+    }
+})
 
 local nvim_lsp = require('lspconfig')
 
-nvim_lsp.lua_ls.setup(lsp.nvim_lua_ls())
+-- Settings to recognize the internal NVIM api
+nvim_lsp.lua_ls.setup({
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnokstics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("lua", true),
+            },
+            telematry = {
+                enable = false
+            }
+        }
+    }
+})
 
+-- Language Servers Config
 nvim_lsp.denols.setup {
     on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
 }
+
 nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     single_file_support = false
 }
 
+nvim_lsp.gopls.setup {
+    on_attach = on_attach,
+    cmd = { "gopls" },
+    root_dir = nvim_lsp.util.root_pattern("go.mod"),
+    settings = {
+        gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+        }
+    }
+}
+
 lsp.ensure_installed({
+    'lua-language-server',
     'tsserver',
     'denols',
     'eslint',
     'rust_analyzer',
     'html',
+    'gopls'
 })
 
 local cmp = require('cmp')
@@ -35,7 +85,7 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
