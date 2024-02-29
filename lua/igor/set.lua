@@ -18,4 +18,5 @@ vim.opt.isfname:append("@-@")
 vim.g.NERDTreeShowHidden = 1
 -- vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
+-- :tnoremap <Esc> <C-\><C-n>
 

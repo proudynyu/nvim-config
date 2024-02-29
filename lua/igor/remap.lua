@@ -26,6 +26,10 @@ vim.keymap.set("n", "Q", "<nop>")
 -- split file
 vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 
+-- open split terminal
+vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("n", "<C-n>", ":split +terminal<enter>")
+
 -- change word globaly
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -38,3 +42,4 @@ if package.config.sub(1, 1) == '\\\\' then
         cache_enabled = true
     }
 end
+

@@ -1,8 +1,8 @@
-local lsp = require('lsp-zero')
+local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(_, bufnr)
-    lsp.default_keymaps({buffer = bufnr})
-end)
+-- lsp.on_attach(function(_, bufnr)
+--     lsp.default_keymaps({buffer = bufnr})
+-- end)
 
 -- Format files on save
 -- Can configure what server and language
@@ -39,6 +39,7 @@ nvim_lsp.lua_ls.setup({
 })
 
 -- Language Servers Config
+-- Typescript & Javascript
 nvim_lsp.denols.setup {
     on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
@@ -50,20 +51,19 @@ nvim_lsp.tsserver.setup {
     single_file_support = false
 }
 
-nvim_lsp.gopls.setup {
-    on_attach = on_attach,
-    cmd = { "gopls" },
-    root_dir = nvim_lsp.util.root_pattern("go.mod"),
-    settings = {
-        gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-        }
-    }
-}
+-- nvim_lsp.gopls.setup {
+--     on_attach = on_attach,
+--     cmd = { "gopls" },
+--     root_dir = nvim_lsp.util.root_pattern("go.mod"),
+--     settings = {
+--         gopls = {
+--             completeUnimported = true,
+--             usePlaceholders = true,
+--         }
+--     }
+-- }
 
 lsp.ensure_installed({
-    'lua-language-server',
     'tsserver',
     'denols',
     'eslint',
