@@ -1,1 +1,2 @@
-require("igor")
+-- require("config.lazy")
+require("config")

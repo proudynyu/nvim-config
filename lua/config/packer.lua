@@ -1,3 +1,4 @@
+
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -17,6 +18,7 @@ return require('packer').startup(function(use)
     use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
     use 'craftzdog/solarized-osaka.nvim'
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')
@@ -97,6 +99,5 @@ return require('packer').startup(function(use)
           branch = '0.5-compat'
       }
 
-      use({ 'rose-pine/neovim', as = 'rose-pine' })
 end)
 
