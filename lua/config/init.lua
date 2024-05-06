@@ -14,4 +14,7 @@ require("config.bufferline")
 require("config.neo-tree")
 require("config.which-key")
 require("config.feline")
+
 require("Comment").setup()
+require("colorizer").setup()
+

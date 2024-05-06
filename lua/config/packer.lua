@@ -17,8 +17,11 @@ return require('packer').startup(function(use)
     -- Colors
     use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
-    use 'craftzdog/solarized-osaka.nvim'
+    use ({'craftzdog/solarized-osaka.nvim', as = 'solarized'})
     use({ 'rose-pine/neovim', as = 'rose-pine' })
+
+    -- Colors for Hex
+    use 'norcalli/nvim-colorizer.lua'
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('theprimeagen/harpoon')

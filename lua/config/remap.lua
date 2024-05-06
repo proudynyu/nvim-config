@@ -27,8 +27,8 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 
 -- open split terminal
-vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-vim.keymap.set("n", "<C-n>", ":split +terminal<enter>")
+vim.api.nvim_set_keymap("t", "<esc>", [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("n", "<leader>ts", ":split +terminal<enter>")
 
 -- change word globaly
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
