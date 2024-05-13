@@ -7,6 +7,11 @@ function Color(color)
             }
         end
 
+        if color == "gruvbox-baby" then
+            vim.g.gruvbox_baby_transparent_mode = true
+            vim.g.gruvbox_baby_background_color = 'dark'
+        end
+
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         vim.cmd.colorscheme(color)
@@ -36,4 +41,4 @@ function Color(color)
     end
 end
 
-Color('rose-pine')
+Color('gruvbox-baby')

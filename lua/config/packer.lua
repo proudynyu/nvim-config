@@ -15,10 +15,9 @@ return require('packer').startup(function(use)
     }
 
     -- Colors
-    use 'morhetz/gruvbox'
     use 'navarasu/onedark.nvim'
-    use ({'craftzdog/solarized-osaka.nvim', as = 'solarized'})
     use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use 'luisiacc/gruvbox-baby'
 
     -- Colors for Hex
     use 'norcalli/nvim-colorizer.lua'
