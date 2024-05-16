@@ -51,18 +51,6 @@ nvim_lsp.tsserver.setup {
     single_file_support = false
 }
 
--- nvim_lsp.gopls.setup {
---     on_attach = on_attach,
---     cmd = { "gopls" },
---     root_dir = nvim_lsp.util.root_pattern("go.mod"),
---     settings = {
---         gopls = {
---             completeUnimported = true,
---             usePlaceholders = true,
---         }
---     }
--- }
-
 lsp.ensure_installed({
     'tsserver',
     'denols',
