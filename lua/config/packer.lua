@@ -32,6 +32,8 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use 'luisiacc/gruvbox-baby'
+    use 'folke/tokyonight.nvim'
+    use 'ellisonleao/gruvbox.nvim'
 
     -- Colors for Hex
     use 'norcalli/nvim-colorizer.lua'

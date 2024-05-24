@@ -12,6 +12,22 @@ function Color(color)
             vim.g.gruvbox_baby_background_color = 'dark'
         end
 
+        if color == "gruvbox" then
+            vim.o.background = "dark"
+            require("gruvbox").setup({
+                italic = {
+                    strings = false,
+                    emphasis = false,
+                    comments = false,
+                    operators = false,
+                    folds = false,
+                },
+                overrides = {
+                    background = { bg = "#181818"}
+                }
+            })
+        end
+
         vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         vim.cmd.colorscheme(color)
@@ -41,4 +57,4 @@ function Color(color)
     end
 end
 
-Color('gruvbox-baby')
+Color('gruvbox')
