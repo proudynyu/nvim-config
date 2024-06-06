@@ -57,4 +57,4 @@ function Color(color)
     end
 end
 
-Color('gruvbox')
+Color('tokyonight-moon')
