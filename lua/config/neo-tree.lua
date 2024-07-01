@@ -221,5 +221,5 @@ commands = {} -- Add a custom command or override a global one using the same fu
                 }
             })
 
-vim.keymap.set("n", "<leader>pe", ":Neotree toggle reveal float<CR>")
+vim.keymap.set("n", "<leader>pe", ":Neotree toggle reveal left<CR>")
 vim.keymap.set("n", "<leader>pb", ":Neotree buffers<CR>")
