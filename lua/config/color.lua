@@ -57,4 +57,4 @@ function Color(color)
     end
 end
 
-Color('rose-pine')
+Color("tokyonight-night")

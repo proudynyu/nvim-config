@@ -40,6 +40,16 @@ nvim_lsp.lua_ls.setup({
 
 -- Language Servers Config
 -- Typescript & Javascript
+lsp.ensure_installed({
+    'tsserver',
+    'denols',
+    'eslint',
+    'rust_analyzer',
+    'html',
+    'gopls',
+    'elixirls'
+})
+
 nvim_lsp.denols.setup {
     on_attach = on_attach,
     root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
@@ -51,14 +61,9 @@ nvim_lsp.tsserver.setup {
     single_file_support = false
 }
 
-lsp.ensure_installed({
-    'tsserver',
-    'denols',
-    'eslint',
-    'rust_analyzer',
-    'html',
-    'gopls'
-})
+nvim_lsp.elixirls.setup {
+    cmd = { "/home/igorbecker/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" }
+}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
