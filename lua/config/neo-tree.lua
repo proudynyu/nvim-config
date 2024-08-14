@@ -71,7 +71,7 @@ require("neo-tree").setup({
         -- see `:h neo-tree-custom-commands-global`
         commands = {},
         window = {
-            position = "float",
+            position = "left",
             width = 40,
             mapping_options = {
                 noremap = true,
@@ -207,7 +207,7 @@ commands = {} -- Add a custom command or override a global one using the same fu
                 },
                 git_status = {
                     window = {
-                        position = "float",
+                        position = "left",
                         mappings = {
                             ["A"]  = "git_add_all",
                             ["gu"] = "git_unstage_file",

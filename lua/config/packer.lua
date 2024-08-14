@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'ellisonleao/gruvbox.nvim'
     use 'neanias/everforest-nvim'
+    use 'water-sucks/darkrose.nvim'
 
     -- Colors for Hex
     use 'norcalli/nvim-colorizer.lua'

@@ -47,7 +47,6 @@ lsp.ensure_installed({
     'rust_analyzer',
     'html',
     'gopls',
-    'elixirls'
 })
 
 nvim_lsp.denols.setup {
@@ -61,9 +60,13 @@ nvim_lsp.tsserver.setup {
     single_file_support = false
 }
 
-nvim_lsp.elixirls.setup {
-    cmd = { "/home/igorbecker/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" }
-}
+if nvim_lsp.tailwindcss then
+    nvim_lsp.tailwindcss.setup {
+        on_attach = on_attach,
+        root_dir = nvim_lsp.util.root_pattern("package.json"),
+        single_file_support = false
+    }
+end
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
