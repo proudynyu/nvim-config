@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
     use 'ellisonleao/gruvbox.nvim'
     use 'neanias/everforest-nvim'
     use 'water-sucks/darkrose.nvim'
+    use 'projekt0n/github-nvim-theme'
 
     -- Colors for Hex
     use 'norcalli/nvim-colorizer.lua'

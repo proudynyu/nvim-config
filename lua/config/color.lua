@@ -57,4 +57,4 @@ function Color(color)
     end
 end
 
-Color("torte")
+Color("github_dark_high_contrast")
