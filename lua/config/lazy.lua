@@ -1,3 +1,20 @@
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- open explorer view
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -27,11 +44,11 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 
 -- open split terminal
-vim.api.nvim_set_keymap("t", "<esc>", [[<C-\><C-n>]], { noremap = true })
+vim.api.nvim_set_keymap("t", "<C-ESC>", [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "<leader>ts", ":split +terminal<enter>")
 
 -- change word globaly
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left>]])
 
 -- add copy to system (for WSL for now)
 if package.config.sub(1, 1) == '\\\\' then
@@ -43,3 +60,16 @@ if package.config.sub(1, 1) == '\\\\' then
     }
 end
 
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+	  { 
+		  "folke/tokyonight.nvim",
+		  config = function() vim.cmd.colorscheme "tokyonight" end,
+		  lazy = false,
+		  priority = 1000,
+		  opt = {},
+	  },
+    { import = "config.plugins" },
+  },
+})
