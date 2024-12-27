@@ -15,7 +15,17 @@ return {
             }
         },
         config = function()
-            require'lspconfig'.lua_ls.setup {}
+            local config = require('lspconfig')
+
+            config.lua_ls.setup {
+                cmd = { 'lua-language-server' },
+                filetypes = { 'lua' }
+            }
+
+            config.clangd.setup {
+                cmd = { 'clangd' },
+                filetypes = { 'c', 'cpp' }
+            }
         end
     }
 }

@@ -63,13 +63,6 @@ end
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-	  { 
-		  "folke/tokyonight.nvim",
-		  config = function() vim.cmd.colorscheme "tokyonight" end,
-		  lazy = false,
-		  priority = 1000,
-		  opt = {},
-	  },
     { import = "config.plugins" },
   },
 })

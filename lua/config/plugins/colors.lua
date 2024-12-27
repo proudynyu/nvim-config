@@ -28,4 +28,11 @@ return {
         end
     },
     { 'rose-pine/neovim', as = 'rose-pine' },
+    { 
+        "folke/tokyonight.nvim",
+        config = function() vim.cmd.colorscheme "tokyonight" end,
+        lazy = false,
+        priority = 1000,
+        opt = {},
+    },
 }
