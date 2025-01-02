@@ -81,7 +81,7 @@ return {
                 -- see `:h neo-tree-custom-commands-global`
                 commands = {},
                 window = {
-                    position = "left",
+                    position = "float",
                     width = 40,
                     mapping_options = {
                         noremap = true,
@@ -217,7 +217,7 @@ return {
                 },
                 git_status = {
                     window = {
-                        position = "left",
+                        position = "float",
                         mappings = {
                             ["A"]  = "git_add_all",
                             ["gu"] = "git_unstage_file",

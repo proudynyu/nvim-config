@@ -24,8 +24,14 @@ return {
 
             config.clangd.setup {
                 cmd = { 'clangd' },
+                root_markers = { '.clangd', 'compile_commands.json' },
                 filetypes = { 'c', 'cpp' }
             }
+
+            -- config.lexical.setup {
+            --     cmd = { 'lexical' },
+            --     filetypes = { 'ex', 'exs' }
+            -- }
         end
     }
 }

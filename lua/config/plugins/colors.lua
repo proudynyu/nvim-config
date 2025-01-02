@@ -28,12 +28,6 @@ return {
             end
         end
     },
-<<<<<<< HEAD
-    { 'rose-pine/neovim', as = 'rose-pine' },
-    { 
-        "folke/tokyonight.nvim",
-        config = function() vim.cmd.colorscheme "tokyonight" end,
-=======
     {
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -41,7 +35,6 @@ return {
     },
     {
         "folke/tokyonight.nvim",
->>>>>>> a6e8e45 (feat: adding mason)
         lazy = false,
         priority = 1000,
         opt = {},
