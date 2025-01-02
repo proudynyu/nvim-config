@@ -15,11 +15,20 @@ return {
             }
         },
         config = function()
+            -- server configs
             local config = require('lspconfig')
 
             config.lua_ls.setup {
                 cmd = { 'lua-language-server' },
-                filetypes = { 'lua' }
+                filetypes = { 'lua' },
+                root_markers = { '.luarc.json', '.luarc.jsonc' },
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        }
+                    }
+                }
             }
 
             config.clangd.setup {
@@ -28,10 +37,27 @@ return {
                 filetypes = { 'c', 'cpp' }
             }
 
+            config.ts_ls.setup {
+                cmd = { 'typescript-language-server', '--stdio' },
+                filetypes = { 'typescriptreact', 'typescript', 'javascript' },
+                root_markers = { 'package.json' }
+            }
+
             -- config.lexical.setup {
             --     cmd = { 'lexical' },
             --     filetypes = { 'ex', 'exs' }
             -- }
+
+            -- keymap configs
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
+            vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
+            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end)
+            vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end)
+            vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end)
+            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end)
+            vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end)
+            vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end)
         end
     }
 }
