@@ -15,7 +15,10 @@ return {
             local builtin = require('telescope.builtin')
 
             require("telescope").setup {
-                vim.keymap.set('n', '<leader>pf', builtin.find_files, {}),
+                vim.keymap.set('n', '<leader>pf', function()
+                    local themes = require('telescope.themes')
+                    builtin.find_files(themes.get_ivy({}))
+                end),
                 vim.keymap.set('n', '<leader>pw', builtin.live_grep, {}),
                 vim.keymap.set('n', '<C-p>', builtin.git_files, {}),
                 vim.keymap.set('n', '<leader>ps', function()
