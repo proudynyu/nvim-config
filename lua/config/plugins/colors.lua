@@ -2,7 +2,7 @@ return {
     {
         'navarasu/onedark.nvim',
         config = function()
-            vim.cmd.colorscheme "onedark"
+            -- vim.cmd.colorscheme "onedark"
             require("onedark").setup {
                 style = "deep",
                 transparent = true,
@@ -38,5 +38,8 @@ return {
         lazy = false,
         priority = 1000,
         opt = {},
+        config = function()
+            vim.cmd.colorscheme "tokyonight"
+        end
     },
 }
