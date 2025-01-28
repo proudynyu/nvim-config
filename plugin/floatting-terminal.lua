@@ -1,4 +1,4 @@
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+vim.keymap.set("t", "<ESC><ESC>", "<c-\\><c-n>")
 
 local state = {
     floating = {
@@ -52,4 +52,4 @@ end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 
-vim.keymap.set({"n", "t"}, "<C-t><C-t>", toggle_terminal)
+-- vim.keymap.set({"n", "t"}, "<C-t><C-t>", toggle_terminal)

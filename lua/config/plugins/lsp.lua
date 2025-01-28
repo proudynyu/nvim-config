@@ -42,7 +42,9 @@ return {
                 filetypes = { 'c', 'cpp' }
             }
 
-            config.tsserver.setup {
+            config.ols.setup{}
+
+            config.ts_ls.setup {
                 cmd = { 'typescript-language-server', '--stdio' },
                 filetypes = { 'typescriptreact', 'typescript', 'javascript' },
                 root_markers = { 'package.json', 'deno.json' }

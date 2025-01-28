@@ -2,7 +2,6 @@ return {
     {
         'navarasu/onedark.nvim',
         config = function()
-            -- vim.cmd.colorscheme "onedark"
             require("onedark").setup {
                 style = "deep",
                 transparent = true,
@@ -21,11 +20,11 @@ return {
                     undercurl = true,
                     background = true,
                 },
+
             }
-            if vim.g.colors_name == "onedark" then
-                vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-            end
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+            vim.cmd.colorscheme "onedark"
         end
     },
     {
@@ -39,7 +38,7 @@ return {
         priority = 1000,
         opt = {},
         config = function()
-            vim.cmd.colorscheme "tokyonight"
+            -- vim.cmd.colorscheme "tokyonight"
         end
     },
 }
