@@ -43,6 +43,9 @@ vim.keymap.set("n", "Q", "<nop>")
 -- split file
 vim.keymap.set("n", "<C-y>", vim.cmd.vsplit)
 
+-- change vertical to horizontal split
+vim.keymap.set("n", "<leader>H", "<C-w>t<C-w>H")
+
 -- open split terminal
 vim.api.nvim_set_keymap("t", "<C-ESC>", [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "<leader>ts", ":split +terminal<enter>")
@@ -63,6 +66,8 @@ end
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { import = "config.plugins" },
+    {
+        import = "config.plugins"
+    },
   },
 })

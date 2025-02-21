@@ -8,7 +8,8 @@ return {
         },
         defaults = {
             file_ignore_patterns = {
-                "node_modules"
+                "node_modules",
+                "package-lock.json"
             }
         },
         config = function()
