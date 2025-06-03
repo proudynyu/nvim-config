@@ -38,8 +38,13 @@ return {
         "folke/tokyonight.nvim",
         lazy = false,
         priority = 1,
-        opt = {},
+        opt = { },
         config = function()
+            -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+            require("tokyonight").setup {
+                transparent = true
+            }
             -- vim.cmd.colorscheme "tokyonight"
         end
     },
@@ -49,34 +54,51 @@ return {
         priority = 1,
     },
     {
-        "Tsuzat/NeoSolarized.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1, -- make sure to load this before all the other start plugins
-        -- config = function()
-            --   vim.cmd [[ colorscheme NeoSolarized ]]
-            -- end
-        },
-        { "EdenEast/nightfox.nvim", lazy = false, },
-        {
-            "eldritch-theme/eldritch.nvim",
-            lazy = false,
-            priority = 1,
-            opts = {},
-            -- config = function()
-            --     vim.cmd.colorscheme "eldritch"
-            -- end
-        },
-        {
-            "zootedb0t/citruszest.nvim",
-            lazy = false,
-            priority = 1,
-        },
-        {
-            "blazkowolf/gruber-darker.nvim",
-            lazy = false,
-            priority = 1000,
-            config = function()
-                vim.cmd.colorscheme "gruber-darker"
-            end
-        }
+        "craftzdog/solarized-osaka.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            require("solarized-osaka").setup {
+                transparent = true,
+                terminal_colors = true,
+                comments = { italic = true }
+            }
+
+            vim.cmd.colorscheme "solarized-osaka"
+        end
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false
+    },
+    {
+        "eldritch-theme/eldritch.nvim",
+        lazy = false,
+        priority = 1,
+        opts = {},
+    },
+    {
+        "zootedb0t/citruszest.nvim",
+        lazy = false,
+        priority = 1,
+    },
+    {
+        "blazkowolf/gruber-darker.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000 ,
+        config = function()
+            -- require("gruvbox").setup {
+            --     transparent_mode = true,
+            -- }
+            -- vim.cmd.colorscheme "gruvbox"
+        end
+    },
+    {
+        'Mofiqul/dracula.nvim'
+    }
 }

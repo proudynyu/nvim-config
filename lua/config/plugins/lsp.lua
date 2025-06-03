@@ -23,6 +23,12 @@ return {
             -- server configs
             local config = require('lspconfig')
 
+            config.gopls.setup {
+                cmd = { 'gopls' },
+                filetypes = { "go", "gomod", "gowork", "gotmpl" },
+                root_markers = { '.go', '.mod' }
+            }
+
             config.lua_ls.setup {
                 cmd = { 'lua-language-server' },
                 filetypes = { 'lua' },
@@ -43,6 +49,8 @@ return {
             }
 
             config.ols.setup{}
+
+            config.zls.setup{}
 
             config.ts_ls.setup {
                 cmd = { 'typescript-language-server', '--stdio' },
