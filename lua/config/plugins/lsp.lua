@@ -20,43 +20,41 @@ return {
             "hrsh7th/nvim-cmp",
         },
         config = function()
-            -- server configs
-            local config = require('lspconfig')
-
-            config.gopls.setup {
+            local config = vim.lsp.config
+            config('gopls', {
                 cmd = { 'gopls' },
                 filetypes = { "go", "gomod", "gowork", "gotmpl" },
                 root_markers = { '.go', '.mod' }
-            }
+            })
 
-            config.lua_ls.setup {
-                cmd = { 'lua-language-server' },
-                filetypes = { 'lua' },
-                root_markers = { '.luarc.json', '.luarc.jsonc' },
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT',
-                        }
-                    }
-                }
-            }
+            -- config.lua_ls.setup {
+            --     cmd = { 'lua-language-server' },
+            --     filetypes = { 'lua' },
+            --     root_markers = { '.luarc.json', '.luarc.jsonc' },
+            --     settings = {
+            --         Lua = {
+            --             runtime = {
+            --                 version = 'LuaJIT',
+            --             }
+            --         }
+            --     }
+            -- }
 
-            config.clangd.setup {
+            config('clangd', {
                 cmd = { 'clangd' },
                 root_markers = { '.clangd', 'compile_commands.json' },
                 filetypes = { 'c', 'cpp' }
-            }
+            })
 
-            config.ols.setup{}
+            config('ols', {})
 
-            config.zls.setup{}
+            config('zls',{})
 
-            config.ts_ls.setup {
+            config('ts_ls', {
                 cmd = { 'typescript-language-server', '--stdio' },
                 filetypes = { 'typescriptreact', 'typescript', 'javascript' },
                 root_markers = { 'package.json', 'deno.json' }
-            }
+            })
 
             -- config.lexical.setup {
             --     cmd = { 'lexical' },

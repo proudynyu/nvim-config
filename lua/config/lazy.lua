@@ -53,15 +53,16 @@ vim.keymap.set("n", "<leader>ts", ":split +terminal<enter>")
 -- change word globaly
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left>]])
 
+-- vim.g.clipboard="clip.exe"
+-- set clipboard=unnamedplus
 -- add copy to system (for WSL for now)
-if package.config.sub(1, 1) == '\\\\' then
-    vim.g.clipboard = {
-        name = 'wsl clipboard',
-        copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
-        paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
-        cache_enabled = true
-    }
-end
+-- if package.config.sub(1, 1) == '\\\\' then
+vim.g.clipboard = {
+    name = 'wsl clipboard',
+    copy =  { ["+"] = { "clip.exe" },   ["*"] = { "clip.exe" } },
+    paste = { ["+"] = { "nvim_paste" }, ["*"] = { "nvim_paste" } },
+    cache_enabled = true
+}
 
 -- Setup lazy.nvim
 require("lazy").setup({
