@@ -49,10 +49,14 @@ local function configure_cmp()
 end
 
 local function configure_lsp_servers()
+    vim.lsp.config('*', {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    })
+
     vim.lsp.config('gopls', {
         cmd = { 'gopls' },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
-        root_markers = { '.go', '.mod' }
+        root_markers = { 'go.mod', 'go.work' },
     })
 
     vim.lsp.config('clangd', {
@@ -63,13 +67,15 @@ local function configure_lsp_servers()
 
     vim.lsp.config('ols', {})
 
-    vim.lsp.config('zls',{})
+    vim.lsp.config('zls', {})
 
     vim.lsp.config('ts_ls', {
         cmd = { 'typescript-language-server', '--stdio' },
         filetypes = { 'typescriptreact', 'typescript', 'javascript' },
         root_markers = { 'package.json', 'deno.json' }
     })
+
+    vim.lsp.enable({ 'gopls', 'clangd', 'ols', 'zls', 'ts_ls' })
 end
 
 return {
