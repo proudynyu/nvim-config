@@ -1,6 +1,6 @@
 local colors = require("config.plugins.colors")
 
-local Switcher = {}
+local ColorSwitcher = {}
 
 local config = {
     colors = {},
@@ -53,7 +53,7 @@ end
 --- @param str string
 --- @param sep string
 --- @return table
-function Switcher.string_split(str, sep)
+function ColorSwitcher.string_split(str, sep)
     if sep == nil then
         return {}
     end
@@ -67,18 +67,18 @@ end
 
 --- @param theme string
 --- @return string|nil
-function Switcher.parse_theme_name(theme)
-    local package = Switcher.string_split(theme, "/")
+function ColorSwitcher.parse_theme_name(theme)
+    local package = ColorSwitcher.string_split(theme, "/")
     if not package[2] then return theme end
-    local t = Switcher.string_split(package[2], ".")
+    local t = ColorSwitcher.string_split(package[2], ".")
     return t[1]
 end
 
-function Switcher.load_colors()
+function ColorSwitcher.load_colors()
     local themes = {}
     for _, value in ipairs(colors) do
         if value[1] then
-            local name = Switcher.parse_theme_name(value[1])
+            local name = ColorSwitcher.parse_theme_name(value[1])
             if name ~= nil then
                 table.insert(themes, name)
             end
@@ -87,7 +87,7 @@ function Switcher.load_colors()
     return themes
 end
 
-function Switcher.create_window(themes)
+function ColorSwitcher.create_window(themes)
     local buf = vim.api.nvim_create_buf(false, true)
 
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, themes)
@@ -112,7 +112,7 @@ function Switcher.create_window(themes)
     return buf, win
 end
 
-function Switcher.apply_selected_theme(buf, win)
+function ColorSwitcher.apply_selected_theme(buf, win)
     local cursor_pos = vim.api.nvim_win_get_cursor(win)
     local line_num = cursor_pos[1]
 
@@ -133,32 +133,32 @@ function Switcher.apply_selected_theme(buf, win)
     end
 end
 
-function Switcher.setup(user_config)
+function ColorSwitcher.setup(user_config)
     config = vim.tbl_deep_extend("force", config, user_config or {})
 end
 
-function Switcher.close_win(win)
+function ColorSwitcher.close_win(win)
     if vim.api.nvim_win_is_valid(win) then
         vim.api.nvim_win_close(win, true)
     end
 end
 
-function Switcher.open_picker()
-    local themes = Switcher.load_colors()
+function ColorSwitcher.open_picker()
+    local themes = ColorSwitcher.load_colors()
 
     if #themes == 0 then
         vim.notify("No themes configured in config.plugins.colors", vim.log.level.WARN)
         return
     end
 
-    local buf, win = Switcher.create_window(themes)
+    local buf, win = ColorSwitcher.create_window(themes)
 
-    vim.keymap.set("n", "<CR>", function() Switcher.apply_selected_theme(buf, win) end, opts)
-    vim.keymap.set("n", "q", function() Switcher.close_win(win) end, opts)
-    vim.keymap.set("n", "<Esc>", function() Switcher.close_win(win) end, opts)
+    vim.keymap.set("n", "<CR>", function() ColorSwitcher.apply_selected_theme(buf, win) end, opts)
+    vim.keymap.set("n", "q", function() ColorSwitcher.close_win(win) end, opts)
+    vim.keymap.set("n", "<Esc>", function() ColorSwitcher.close_win(win) end, opts)
 end
 
 set_loaded_theme()
-vim.keymap.set("n", "<leader>cc", function() Switcher.open_picker() end, { desc = "Open theme switcher" })
+vim.keymap.set("n", "<leader>cc", function() ColorSwitcher.open_picker() end, { desc = "Open theme switcher" })
 
-return Switcher
+return ColorSwitcher
