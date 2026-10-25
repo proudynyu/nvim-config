@@ -15,12 +15,17 @@ return {
             local builtin = require('telescope.builtin')
 
             require("telescope").setup {
+                pickers = {
+                    find_files = {
+                        previewer = false
+                    }
+                },
                 vim.keymap.set('n', '<leader>pf', function()
                     local themes = require('telescope.themes')
                     builtin.find_files(themes.get_ivy({}))
                 end),
                 vim.keymap.set('n', '<leader>pw', builtin.live_grep, {}),
-                vim.keymap.set('n', '<C-p>', builtin.git_files, {}),
+                vim.keymap.set('n', '<leader>pg', builtin.git_files, {}),
                 vim.keymap.set('n', '<leader>ps', function()
                     builtin.grep_string({ search = vim.fn.input("Grep > ") })
                 end),

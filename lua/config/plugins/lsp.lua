@@ -29,9 +29,9 @@ local function configure_cmp()
 
     cmp.setup({
         snippet = {
-            expand = function(args)
-                require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            end,
+            -- expand = function(args)
+            --     require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- end,
         },
         mapping = cmp.mapping.preset.insert({
             ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -41,7 +41,7 @@ local function configure_cmp()
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'luasnip' }, -- For luasnip users.
+            -- { name = 'luasnip' }, -- For luasnip users.
         }, {
             { name = 'buffer' },
         })

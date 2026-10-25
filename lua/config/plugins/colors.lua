@@ -2,10 +2,11 @@ return {
     {
         'navarasu/onedark.nvim',
         lazy = false,
+        priority = 1000,
         config = function()
             require("onedark").setup {
                 style = "deep",
-                transparent = true,
+                -- transparent = true,
                 code_style = {
                     comments = 'italic',
                     keywords = 'none',
@@ -25,13 +26,12 @@ return {
             }
             -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
             -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-            -- vim.cmd.colorscheme "onedark"
         end
     },
     {
         "folke/tokyonight.nvim",
         lazy = false,
-        priority = 1,
+        -- priority = 1,
         opt = { },
         config = function()
             -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -39,17 +39,20 @@ return {
             -- require("tokyonight").setup {
             --     transparent = true
             -- }
-            -- vim.cmd.colorscheme "tokyonight-storm"
+            -- vim.cmd.colorscheme "tokyonight-night"
         end
     },
     {
         "ellisonleao/gruvbox.nvim",
-        priority = 1000 ,
+        -- priority = 1000 ,
         config = function()
             -- require("gruvbox").setup {
             --     transparent_mode = true,
             -- }
-            vim.cmd.colorscheme "gruvbox"
+            -- vim.cmd.colorscheme "gruvbox"
         end
-    }
+    },
+    { "blazkowolf/gruber-darker.nvim" },
+    { 'datsfilipe/vesper.nvim' },
+    { 'yorumicolors/yorumi.nvim' }
 }
