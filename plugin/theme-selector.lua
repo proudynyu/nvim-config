@@ -3,11 +3,7 @@ local colors = require("config.plugins.colors")
 local ColorSwitcher = {}
 
 local config = {
-    colors = {},
-    state = {
-        buf = -1,
-        win = -1
-    }
+    colors = {}
 }
 
 local function get_stage_file()
@@ -113,11 +109,7 @@ function ColorSwitcher.create_window(themes)
 end
 
 function ColorSwitcher.apply_selected_theme(buf, win)
-    local cursor_pos = vim.api.nvim_win_get_cursor(win)
-    local line_num = cursor_pos[1]
-
-    local lines = vim.api.nvim_buf_get_lines(buf, line_num - 1, line_num, false)
-    local selected_theme = lines[1]
+    local selected_theme = ColorSwitcher.get_theme_under_cursor(buf, win)
 
     if vim.api.nvim_win_is_valid(win) then
         vim.api.nvim_win_close(win, true)
@@ -137,10 +129,33 @@ function ColorSwitcher.setup(user_config)
     config = vim.tbl_deep_extend("force", config, user_config or {})
 end
 
-function ColorSwitcher.close_win(win)
+function ColorSwitcher.close_win(win, original_theme)
     if vim.api.nvim_win_is_valid(win) then
         vim.api.nvim_win_close(win, true)
     end
+    if original_theme then
+        pcall(vim.cmd, "colorscheme " .. original_theme)
+    end
+end
+
+function ColorSwitcher.get_theme_under_cursor(buf, win)
+    local cursor_pos = vim.api.nvim_win_get_cursor(win)
+    local line_num = cursor_pos[1]
+
+    local lines = vim.api.nvim_buf_get_lines(buf, line_num - 1, line_num, false)
+    return lines[1]
+end
+
+function ColorSwitcher.preview(buf, win)
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        buffer = buf,
+        callback = function()
+            local theme = ColorSwitcher.get_theme_under_cursor(buf, win)
+            if theme and theme ~= "" then
+                pcall(vim.cmd, "colorscheme " .. theme)
+            end
+        end
+    })
 end
 
 function ColorSwitcher.open_picker()
@@ -151,11 +166,16 @@ function ColorSwitcher.open_picker()
         return
     end
 
+    local original_theme = vim.g.colors_name
+
     local buf, win = ColorSwitcher.create_window(themes)
+    local opts = { buffer = buf, silent = true }
+
+    ColorSwitcher.preview(buf, win)
 
     vim.keymap.set("n", "<CR>", function() ColorSwitcher.apply_selected_theme(buf, win) end, opts)
-    vim.keymap.set("n", "q", function() ColorSwitcher.close_win(win) end, opts)
-    vim.keymap.set("n", "<Esc>", function() ColorSwitcher.close_win(win) end, opts)
+    vim.keymap.set("n", "q", function() ColorSwitcher.close_win(win, original_theme) end, opts)
+    vim.keymap.set("n", "<Esc>", function() ColorSwitcher.close_win(win, original_theme) end, opts)
 end
 
 set_loaded_theme()
