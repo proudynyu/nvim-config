@@ -101,7 +101,9 @@ function ColorSwitcher.create_window(themes)
         height = height,
         row = row,
         col = col,
-        border = "rounded"
+        border = "rounded",
+        title = "Select theme",
+        title_pos = "center"
     }
 
     local win = vim.api.nvim_open_win(buf, true, opts)
